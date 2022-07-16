@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="sa_style">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/active_text_size</item>
+        <item name="android:textColor">@color/text_active</item>
+        <item name="android:padding">@dimen/box_padding</item>
+        <!-- Android recommendation -->
+        <item name="android:minHeight">48dp</item>
+    </style>
+</resources>

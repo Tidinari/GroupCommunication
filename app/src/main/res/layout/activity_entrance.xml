@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".EntranceActivity">
+
+    <TextView
+        android:id="@+id/input_group_hint"
+        style="@style/sa_style"
+        android:background="@drawable/rounded_top_corners"
+        android:gravity="center"
+        android:text="@string/input_group"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@id/group_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <AutoCompleteTextView
+        android:id="@+id/group_input"
+        style="@style/sa_style"
+        android:autofillHints="creditCardNumber"
+        android:background="@drawable/box_with_border"
+        android:textAlignment="center"
+        android:hint="@string/example_group"
+        android:textAllCaps="true"
+        android:textColor="@color/text_active"
+        android:textColorHint="@color/text_hint"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:maxLength="12"
+        android:maxLines="1"
+        android:completionThreshold="2"
+        app:layout_constraintBottom_toTopOf="@id/input_password_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_group_hint"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/input_password_hint"
+        style="@style/sa_style"
+        android:background="@drawable/box_with_border"
+        android:gravity="center"
+        android:text="@string/input_password"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@id/password_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group_input" />
+
+    <EditText
+        android:id="@+id/password_input"
+        style="@style/sa_style"
+        android:autofillHints="creditCardNumber"
+        android:background="@drawable/box_with_border"
+        android:textAlignment="center"
+        android:hint="@string/example_password"
+        android:textAllCaps="true"
+        android:textColor="@color/text_active"
+        android:textColorHint="@color/text_hint"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:maxLength="12"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@id/choose"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_password_hint"
+        android:inputType="textVisiblePassword" />
+
+    <Button
+        android:id="@+id/choose"
+        style="@style/sa_style"
+        android:background="@drawable/rounded_bottom_corners_button"
+        android:enabled="false"
+        android:gravity="center"
+        android:text="@string/choose"
+        android:textColor="@color/sa_choose_button_text"
+        android:textSize="35sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_input" />
+</androidx.constraintlayout.widget.ConstraintLayout>

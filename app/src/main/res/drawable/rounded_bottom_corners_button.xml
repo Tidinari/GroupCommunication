@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+    <shape>
+        <solid android:color="@color/bad_box_inside" />
+        <corners android:bottomLeftRadius="@dimen/corner_radius" android:bottomRightRadius="@dimen/corner_radius"/>
+        <stroke android:color="@color/box_border" android:width="@dimen/stroke_width"/>
+    </shape>
+    </item>
+    <item android:state_enabled="true">
+        <shape>
+            <solid android:color="@color/good_box_inside" />
+            <corners android:bottomLeftRadius="@dimen/corner_radius" android:bottomRightRadius="@dimen/corner_radius"/>
+            <stroke android:color="@color/box_border" android:width="@dimen/stroke_width"/>
+        </shape>
+    </item>
+    <item android:drawable="@drawable/rounded_bottom_corners"/>
+</selector>

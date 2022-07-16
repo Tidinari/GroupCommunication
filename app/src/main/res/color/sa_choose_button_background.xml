@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:color="@color/bad_box_inside" />
+    <item android:state_enabled="true" android:color="@color/good_box_inside"/>
+    <item android:color="@color/box_inside"/>
+</selector>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="active_text_size">22sp</dimen>
+    <dimen name="box_padding">7dp</dimen>
+    <dimen name="corner_radius">20dp</dimen>
+    <dimen name="stroke_width">1dp</dimen>
+</resources>
