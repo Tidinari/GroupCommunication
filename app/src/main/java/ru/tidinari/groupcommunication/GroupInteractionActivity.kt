@@ -1,12 +1,10 @@
 package ru.tidinari.groupcommunication
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.tidinari.groupcommunication.databinding.ActivityGroupInteractionBinding
 
 class GroupInteractionActivity : AppCompatActivity() {
@@ -15,6 +13,8 @@ class GroupInteractionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val group = (intent.extras?.getString("group") ?: "АААА-01-20")
+        val password = (intent.extras?.getString("password") ?: "123456789asd")
 
         binding = ActivityGroupInteractionBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -22,14 +22,6 @@ class GroupInteractionActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_ingroup_interaction)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 }
