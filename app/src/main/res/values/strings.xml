@@ -4,5 +4,9 @@
     <string name="example_group">ИНБО–15–20</string>
     <string name="input_password">Пароль группы:</string>
     <string name="example_password">examplepass</string>
-    <string name="choose">Выбрать</string>
+    <string name="enter">Войти</string>
+    <string name="title_activity_ingroup_interaction">ingroup_interaction</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

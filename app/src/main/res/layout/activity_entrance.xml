@@ -79,7 +79,7 @@
         android:background="@drawable/rounded_bottom_corners_button"
         android:enabled="false"
         android:gravity="center"
-        android:text="@string/choose"
+        android:text="@string/enter"
         android:textColor="@color/sa_choose_button_text"
         android:textSize="35sp"
         app:backgroundTint="@null"

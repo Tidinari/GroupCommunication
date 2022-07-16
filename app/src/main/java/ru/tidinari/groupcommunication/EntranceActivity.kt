@@ -47,7 +47,7 @@ class EntranceActivity : AppCompatActivity() {
             this,
             android.R.layout.simple_dropdown_item_1line,
             listOf(
-                "Belgium", "France", "Italy", "Germany111", "Spain67891"
+                "АААА-01-22", "ББББ-22-22"
             )
         )
         groupInput.setAdapter(adapter)
