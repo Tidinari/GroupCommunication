@@ -5,8 +5,7 @@
     <string name="input_password">Пароль группы:</string>
     <string name="example_password">examplepass</string>
     <string name="enter">Войти</string>
-    <string name="title_activity_ingroup_interaction">ingroup_interaction</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_communication">Чат</string>
+    <string name="title_schedule">Расписание</string>
+    <string name="title_settings">Настройки</string>
 </resources>

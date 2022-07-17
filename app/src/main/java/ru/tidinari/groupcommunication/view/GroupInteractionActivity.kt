@@ -1,10 +1,11 @@
-package ru.tidinari.groupcommunication
+package ru.tidinari.groupcommunication.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ru.tidinari.groupcommunication.R
 import ru.tidinari.groupcommunication.databinding.ActivityGroupInteractionBinding
 
 class GroupInteractionActivity : AppCompatActivity() {

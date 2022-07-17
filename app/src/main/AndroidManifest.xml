@@ -7,13 +7,10 @@
         android:icon="@mipmap/ic_dem_avatar"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_dem_avatar_round"
-        android:theme="@style/Theme.GroupCommunication">
+        android:theme="@style/Theme.GroupCommunication"
+        android:name=".app.GroupCommunicationApplication">
         <activity
-            android:name=".GroupInteractionActivity"
-            android:exported="false"
-            android:label="@string/title_activity_ingroup_interaction" />
-        <activity
-            android:name=".EntranceActivity"
+            android:name=".view.entrance.EntranceActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.GroupInteractionActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

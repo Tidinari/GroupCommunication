@@ -1,14 +1,11 @@
-package ru.tidinari.groupcommunication
+package ru.tidinari.groupcommunication.view.entrance
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
+import ru.tidinari.groupcommunication.view.GroupInteractionActivity
 import ru.tidinari.groupcommunication.databinding.ActivityEntranceBinding
 
 
