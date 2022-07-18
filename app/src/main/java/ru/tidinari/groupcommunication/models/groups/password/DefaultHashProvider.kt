@@ -14,7 +14,7 @@ class DefaultHashProvider: HashProvider {
         val hashedDataBytes: ByteArray = hashProvider.digest((password + salt).toByteArray())
         val builder = StringBuilder()
         builder.append(bytesToHex(hashedDataBytes))
-        builder.append('&')
+        builder.append('%')
         builder.append(salt)
         return builder.toString()
     }
