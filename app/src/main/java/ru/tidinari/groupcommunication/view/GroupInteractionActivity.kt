@@ -14,9 +14,6 @@ class GroupInteractionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val group = (intent.extras?.getString("group") ?: "ТЕСТ-00-00")
-        val password = (intent.extras?.getString("password") ?: "testgroup")
-
         binding = ActivityGroupInteractionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

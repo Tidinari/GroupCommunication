@@ -3,10 +3,17 @@ package ru.tidinari.groupcommunication.view.entrance
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.viewModels
 import ru.tidinari.groupcommunication.view.GroupInteractionActivity
 import ru.tidinari.groupcommunication.databinding.ActivityEntranceBinding
+import ru.tidinari.groupcommunication.models.groups.Group
+import ru.tidinari.groupcommunication.models.groups.repo.entrance.User
+import ru.tidinari.groupcommunication.viewmodels.entrance.EntranceViewModel
+import ru.tidinari.groupcommunication.viewmodels.settings.SettingsViewModel
 
 
 class EntranceActivity : AppCompatActivity() {
@@ -15,6 +22,21 @@ class EntranceActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val entranceViewModel = viewModels<EntranceViewModel>().value
+
+        entranceViewModel.group.observe(this) {
+            if (it != null) {
+                transferToGroupInteractionActivity(it)
+            } else {
+                Toast.makeText(applicationContext, "Неправильный пароль!", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        val isUserStoredLocally = entranceViewModel.isUserStoredLocally()
+        if (isUserStoredLocally) {
+            entranceViewModel.signIn(entranceViewModel.getUser())
+        }
+
         binding = ActivityEntranceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -53,22 +75,22 @@ class EntranceActivity : AppCompatActivity() {
             this,
             android.R.layout.simple_dropdown_item_1line,
             listOf(
-                "АААА-01-22", "ББББ-22-22"
+                "АААА-01-22", "ТЕСТ-00-00"
             )
         )
         groupInput.setAdapter(adapter)
         // Button action
         button.setOnClickListener {
-            // TODO: validate group and password properly
-            transferToGroupInteractionActivity(groupInput.text.toString(), passwordInput.text.toString())
+            entranceViewModel.signUp(groupInput.text.toString(), passwordInput.text.toString())
         }
     }
 
-    private fun transferToGroupInteractionActivity(group: String, password: String) {
+    private fun transferToGroupInteractionActivity(group: Group) {
         val intent = Intent(this, GroupInteractionActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
-        intent.putExtra("group", group)
-        intent.putExtra("password", password)
+        intent.putExtra("group", group.group)
+        intent.putExtra("user", group.userSecret.userHash)
+        intent.putExtra("password", group.groupSecret)
         startActivity(intent)
         finish()
     }

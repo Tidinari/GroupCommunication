@@ -1,5 +1,11 @@
 package ru.tidinari.groupcommunication.models.groups
 
-import ru.tidinari.groupcommunication.models.groups.password.Password
+import kotlinx.serialization.Serializable
+import ru.tidinari.groupcommunication.models.groups.repo.entrance.User
 
-data class Group(val group: String, val password: Password)
+@Serializable
+data class Group(
+    val group: String = "ТЕСТ-00-00",
+    val groupSecret: String,
+    val userSecret: User
+)

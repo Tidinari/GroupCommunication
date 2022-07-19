@@ -3,13 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_communication">
-
-    <fragment
-        android:id="@+id/navigation_communication"
-        android:name="ru.tidinari.groupcommunication.view.communication.CommunicationFragment"
-        android:label="@string/title_communication"
-        tools:layout="@layout/fragment_communication" />
+    app:startDestination="@+id/navigation_schedule">
 
     <fragment
         android:id="@+id/navigation_schedule"
