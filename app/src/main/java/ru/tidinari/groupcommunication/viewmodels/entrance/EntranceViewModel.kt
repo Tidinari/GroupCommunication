@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import retrofit2.HttpException
 import ru.tidinari.groupcommunication.app.GroupCommunicationApplication
 import ru.tidinari.groupcommunication.app.RetrofitFactory
 import ru.tidinari.groupcommunication.models.groups.Group
@@ -22,15 +23,23 @@ class EntranceViewModel : ViewModel() {
         entryRepo = retrofit.create(EntryRepo::class.java)
     }
 
-    private var _userGroup: MutableLiveData<Group?> = MutableLiveData()
+    private val _userGroup: MutableLiveData<Group?> = MutableLiveData()
     val group: LiveData<Group?> = _userGroup
 
-    fun isUserStoredLocally(): Boolean {
-        return GroupCommunicationApplication.localRepo.getString("user", null)?.isNotEmpty() ?: false
+    private val _groupList: MutableList<String> = mutableListOf()
+    val groupList: List<String> = _groupList
+
+    fun getLocalUser(): User? {
+        val hash = GroupCommunicationApplication.localRepo.getString("user", null)
+        return hash?.let { User(it) }
     }
 
-    fun getUser(): User {
-        return User(GroupCommunicationApplication.localRepo.getString("user", "")!!)
+    fun getGroups() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                _groupList.addAll(entryRepo.getGroups())
+            }
+        }
     }
 
     fun signUp(group: String, _password: String) {
@@ -55,7 +64,7 @@ class EntranceViewModel : ViewModel() {
     fun signIn(user: User) {
         viewModelScope.launch {
             val response: Group? = try {
-                entryRepo.signIn(user.userHash)
+                entryRepo.signIn(user)
             } catch (e: Exception) {
                 null
             }

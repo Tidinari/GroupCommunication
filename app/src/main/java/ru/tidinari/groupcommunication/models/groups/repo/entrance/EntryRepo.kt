@@ -9,5 +9,8 @@ interface EntryRepo {
     suspend fun signUp(@Query("group") group: String, @Query("password") passwordHash: String): Group?
 
     @GET("./signin")
-    suspend fun signIn(@Query("user") userHash: String): Group?
+    suspend fun signIn(@Query("user") userHash: User): Group?
+
+    @GET("./groups")
+    suspend fun getGroups(): List<String>
 }

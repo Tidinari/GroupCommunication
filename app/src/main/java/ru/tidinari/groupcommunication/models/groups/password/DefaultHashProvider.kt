@@ -5,28 +5,9 @@ import kotlin.random.Random
 
 class DefaultHashProvider: HashProvider {
     override fun hash(password: String): String {
-        val salt = generateString()
-        return hash(password, salt)
-    }
-
-    override fun hash(password: String, salt: String): String {
         val hashProvider = MessageDigest.getInstance("SHA-256")
-        val hashedDataBytes: ByteArray = hashProvider.digest((password + salt).toByteArray())
-        val builder = StringBuilder()
-        builder.append(bytesToHex(hashedDataBytes))
-        builder.append('%')
-        builder.append(salt)
-        return builder.toString()
-    }
-
-    private fun generateString(size: Int = 6): String {
-        val random = Random.Default
-        val builder = StringBuilder()
-
-        for (i in 0..size) {
-            builder.append(Char(random.nextInt(97, 122)))
-        }
-        return builder.toString()
+        val hashedDataBytes: ByteArray = hashProvider.digest((password).toByteArray())
+        return bytesToHex(hashedDataBytes)
     }
 
     private fun bytesToHex(bytes: ByteArray): String {

@@ -27,7 +27,7 @@ class RetrofitFactory private constructor() {
     private val converterFactory = Json.asConverterFactory("application/json".toMediaType())
 
     val retrofitClient: Retrofit = Retrofit.Builder()
-        .baseUrl("https://google.com/") // TODO: add base url
+        .baseUrl("http://192.168.0.138:5050/") // TODO: add base url
         .client(okHttpClient)
         .addConverterFactory(converterFactory)
         .build()
