@@ -46,43 +46,11 @@
         android:maxLength="12"
         android:maxLines="1"
         android:completionThreshold="2"
-        app:layout_constraintBottom_toTopOf="@id/input_password_hint"
+        app:layout_constraintBottom_toTopOf="@id/choose"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_group_hint"
         android:inputType="textCapCharacters" />
-
-    <TextView
-        android:id="@+id/input_password_hint"
-        style="@style/sa_style"
-        android:background="@drawable/box_with_border"
-        android:gravity="center"
-        android:text="@string/input_password"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@id/password_input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/group_input" />
-
-    <EditText
-        android:id="@+id/password_input"
-        style="@style/sa_style"
-        android:autofillHints="creditCardNumber"
-        android:background="@drawable/box_with_border"
-        android:textAlignment="center"
-        android:hint="@string/example_password"
-        android:textAllCaps="true"
-        android:textColor="@color/text_active"
-        android:textColorHint="@color/text_hint"
-        android:textSize="25sp"
-        android:gravity="center"
-        android:maxLength="12"
-        android:maxLines="1"
-        app:layout_constraintBottom_toTopOf="@id/choose"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_password_hint"
-        android:inputType="textVisiblePassword" />
 
     <Button
         android:id="@+id/choose"
@@ -97,5 +65,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_input" />
+        app:layout_constraintTop_toBottomOf="@+id/group_input" />
 </androidx.constraintlayout.widget.ConstraintLayout>

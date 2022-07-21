@@ -4,8 +4,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Lesson(
-    val weeks: Short,
-    val lessonInDay: Short,
     val name: String,
-    val isImportant: Short
+    val day: Int,
+    val lessonInDay: Int,
+    val activityType: String,
+    val teacher: String,
+    val room: String,
 )
