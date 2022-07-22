@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.view.entrance
+package ru.tidinari.groupcommunication.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import ru.tidinari.groupcommunication.databinding.ActivityEntranceBinding
-import ru.tidinari.groupcommunication.view.GroupInteractionActivity
-import ru.tidinari.groupcommunication.viewmodels.entrance.EntranceViewModel
+import ru.tidinari.groupcommunication.viewmodels.EntranceViewModel
 
 
 class EntranceActivity : AppCompatActivity() {

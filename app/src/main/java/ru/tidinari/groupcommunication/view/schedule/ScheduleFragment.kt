@@ -22,15 +22,10 @@ class ScheduleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val scheduleViewModel =
-            ViewModelProvider(this).get(ScheduleViewModel::class.java)
+            ViewModelProvider(this)[ScheduleViewModel::class.java]
 
         _binding = FragmentScheduleBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textView: TextView = binding.textDashboard
-        scheduleViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 

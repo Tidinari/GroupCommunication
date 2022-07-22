@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.viewmodels.entrance
+package ru.tidinari.groupcommunication.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
