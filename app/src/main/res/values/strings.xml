@@ -9,4 +9,6 @@
     <string name="title_schedule">Расписание</string>
     <string name="title_settings">Настройки</string>
     <string name="create_group_hint">Хочешь создать свою группу?\nПиши в ВК: @LuckyStar</string>
+    <string name="refresh">Обновить</string>
+    <string name="problem_with_getting_local_schedule">Не удалось получить локальное расписание!</string>
 </resources>

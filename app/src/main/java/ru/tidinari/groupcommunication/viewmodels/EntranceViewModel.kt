@@ -7,7 +7,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.tidinari.groupcommunication.app.GroupCommunicationApplication
 import ru.tidinari.groupcommunication.app.RetrofitFactory
-import ru.tidinari.groupcommunication.models.groups.repo.entrance.EntryRepo
+import ru.tidinari.groupcommunication.models.repo.entrance.EntryRepo
 
 class EntranceViewModel : ViewModel() {
     private val entryRepo: EntryRepo
@@ -26,7 +26,7 @@ class EntranceViewModel : ViewModel() {
     val groupList: List<String> = _groupList
 
     fun saveGroupLocally(group: String) {
-        val localStorage = GroupCommunicationApplication.localRepo.edit()
+        val localStorage = GroupCommunicationApplication.sharedPreferences.edit()
         localStorage.putString("group", group)
         localStorage.commit()
     }

@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.models.groups.repo.entrance
+package ru.tidinari.groupcommunication.models.repo.entrance
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

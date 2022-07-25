@@ -17,7 +17,7 @@ class GroupInteractionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val group = GroupCommunicationApplication.localRepo.getString("group", null)
+        val group = GroupCommunicationApplication.sharedPreferences.getString("group", null)
         if (group.isNullOrEmpty()) {
             transferToEntranceActivity()
         }

@@ -1,7 +1,6 @@
 package ru.tidinari.groupcommunication.models.groups
 
 import kotlinx.serialization.Serializable
-import ru.tidinari.groupcommunication.models.groups.repo.entrance.User
 
 @Serializable
 data class Group(
