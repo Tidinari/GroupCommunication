@@ -1,6 +1,7 @@
 package ru.tidinari.groupcommunication.view.schedule
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import ru.tidinari.groupcommunication.R
@@ -39,9 +42,10 @@ class ScheduleFragment : Fragment() {
 
         _binding = FragmentScheduleBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        binding.weekLessons.layoutManager = LinearLayoutManager(requireContext())
         scheduleViewModel.schedule.observe(viewLifecycleOwner) {
-            binding.schedule.text = Json.encodeToString(it)
+            Log.i("DEBUG", it[1].toString())
+            binding.weekLessons.adapter = LessonsAdapter(it[1] ?: return@observe)
             if (scheduleViewModel.usedRemoteStorage) {
                 scheduleViewModel.writeScheduleToLocalStorage()
             }
