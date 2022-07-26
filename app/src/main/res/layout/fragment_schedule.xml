@@ -8,37 +8,94 @@
     app:layout_scrollEffect="none"
     tools:context=".view.schedule.ScheduleFragment">
 
-    <Button
-        android:id="@+id/refresh_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/refresh"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="61dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/week_lessons"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/weeks"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        app:tabMaxWidth="50dp"
+        app:tabPaddingBottom="5dp"
+        app:tabPaddingStart="5dp"
+        app:tabSelectedTextColor="@color/text_active"
+        app:tabTextColor="@color/text_hint"
+        app:tabIconTint="@color/dark_green"
+        app:tabMode="scrollable"
+        app:layout_constraintBottom_toTopOf="@+id/week_days"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:background="@color/background"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/week_days"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        app:tabMaxWidth="50dp"
+        app:tabPaddingBottom="5dp"
+        app:tabPaddingStart="5dp"
+        app:tabSelectedTextColor="@color/text_active"
+        app:tabTextColor="@color/text_hint"
+        app:tabIconTint="@color/dark_green"
+        app:tabMode="auto"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/weeks"
+        android:background="@color/background">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/monday" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tuesday" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wednesday" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/thursday" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/friday" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/saturday" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_baseline_refresh_24"/>
+    </com.google.android.material.tabs.TabLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="115dp" />
+        app:layout_constraintGuide_begin="125dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/week_lessons"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/week_days" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,32 +1,24 @@
 package ru.tidinari.groupcommunication.view.schedule
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import com.google.android.material.tabs.TabLayout
 import ru.tidinari.groupcommunication.R
 import ru.tidinari.groupcommunication.app.GroupCommunicationApplication
 import ru.tidinari.groupcommunication.databinding.FragmentScheduleBinding
-import ru.tidinari.groupcommunication.viewmodels.EntranceViewModel
 import ru.tidinari.groupcommunication.viewmodels.schedule.ScheduleViewModel
 
 class ScheduleFragment : Fragment() {
 
     private var _binding: FragmentScheduleBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -42,10 +34,17 @@ class ScheduleFragment : Fragment() {
 
         _binding = FragmentScheduleBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        binding.weekLessons.layoutManager = LinearLayoutManager(requireContext())
+
+        // Construct week tabs
+        for (i in 1..16) {
+            binding.weeks.addTab(binding.weeks.newTab().setText("$i"))
+        }
+        binding.weeks.addOnTabSelectedListener(WeekTabListener(
+            scheduleViewModel, binding.weekLessons, binding.weekDays, binding.weeks, viewLifecycleOwner
+        ))
+
         scheduleViewModel.schedule.observe(viewLifecycleOwner) {
-            Log.i("DEBUG", it[1].toString())
-            binding.weekLessons.adapter = LessonsAdapter(it[1] ?: return@observe)
+            Toast.makeText(requireContext(), R.string.successful_refreshed, Toast.LENGTH_LONG)
             if (scheduleViewModel.usedRemoteStorage) {
                 scheduleViewModel.writeScheduleToLocalStorage()
             }
@@ -60,10 +59,6 @@ class ScheduleFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 )
             }
-        }
-
-        binding.refreshButton.setOnClickListener {
-            scheduleViewModel.getRemoteSchedule()
         }
         return root
     }

@@ -10,5 +10,14 @@
     <string name="title_settings">Настройки</string>
     <string name="create_group_hint">Хочешь создать свою группу?\nПиши в ВК: @LuckyStar</string>
     <string name="refresh">Обновить</string>
+    <string name="successful_refreshed">Успешно обновлено!</string>
     <string name="problem_with_getting_local_schedule">Не удалось получить локальное расписание!</string>
+    <string name="wait_for_refreshing">Происходит обновление… Ожидайте…</string>
+    <string name="monday">ПН</string>
+    <string name="tuesday">ВТ</string>
+    <string name="wednesday">СР</string>
+    <string name="thursday">ЧТ</string>
+    <string name="friday">ПТ</string>
+    <string name="saturday">СБ</string>
+    <string name="sunday">ВС</string>
 </resources>

@@ -2,6 +2,7 @@ package ru.tidinari.groupcommunication.models.repo.schedule
 
 import kotlinx.serialization.Serializable
 
+// TODO: добавить domain директорию, конвертировать данные, полученные из интернета, в data class с этим энамом
 @Serializable
 data class Lesson(
     val name: String,
