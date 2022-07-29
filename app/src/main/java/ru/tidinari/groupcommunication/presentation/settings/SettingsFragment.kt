@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.view.settings
+package ru.tidinari.groupcommunication.presentation.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater

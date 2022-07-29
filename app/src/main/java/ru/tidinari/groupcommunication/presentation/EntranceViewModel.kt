@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.viewmodels
+package ru.tidinari.groupcommunication.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,7 +7,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.tidinari.groupcommunication.app.GroupCommunicationApplication
 import ru.tidinari.groupcommunication.app.RetrofitFactory
-import ru.tidinari.groupcommunication.models.repo.entrance.EntryRepo
+import ru.tidinari.groupcommunication.domain.repo.entrance.EntryRepo
 
 class EntranceViewModel : ViewModel() {
     private val entryRepo: EntryRepo

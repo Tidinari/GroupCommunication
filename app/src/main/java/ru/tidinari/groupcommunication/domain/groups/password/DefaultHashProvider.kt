@@ -1,7 +1,6 @@
-package ru.tidinari.groupcommunication.models.groups.password
+package ru.tidinari.groupcommunication.domain.groups.password
 
 import java.security.MessageDigest
-import kotlin.random.Random
 
 class DefaultHashProvider: HashProvider {
     override fun hash(password: String): String {

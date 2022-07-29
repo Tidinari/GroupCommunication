@@ -1,11 +1,11 @@
-package ru.tidinari.groupcommunication.view.schedule
+package ru.tidinari.groupcommunication.presentation.schedule
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.tidinari.groupcommunication.R
-import ru.tidinari.groupcommunication.models.repo.schedule.Lesson
+import ru.tidinari.groupcommunication.domain.repo.schedule.Lesson
 
 class LessonsAdapter(val lessons: List<Lesson>):
     RecyclerView.Adapter<LessonViewHolder>() {

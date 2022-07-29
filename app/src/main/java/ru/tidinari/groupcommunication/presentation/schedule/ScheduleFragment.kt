@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.view.schedule
+package ru.tidinari.groupcommunication.presentation.schedule
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,12 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.tabs.TabLayout
 import ru.tidinari.groupcommunication.R
 import ru.tidinari.groupcommunication.app.GroupCommunicationApplication
 import ru.tidinari.groupcommunication.databinding.FragmentScheduleBinding
-import ru.tidinari.groupcommunication.viewmodels.schedule.ScheduleViewModel
 
 class ScheduleFragment : Fragment() {
 

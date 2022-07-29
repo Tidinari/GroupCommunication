@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.models.repo.entrance
+package ru.tidinari.groupcommunication.domain.repo.entrance
 
 import retrofit2.http.GET
 

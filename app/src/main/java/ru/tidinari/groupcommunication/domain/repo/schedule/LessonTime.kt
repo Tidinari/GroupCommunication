@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.models.repo.schedule
+package ru.tidinari.groupcommunication.domain.repo.schedule
 
 enum class LessonTime(val value: String) {
     FIRST("09:00\n10:30"),

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     app:layout_scrollEffect="none"
-    tools:context=".view.schedule.ScheduleFragment">
+    tools:context=".presentation.schedule.ScheduleFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/weeks"

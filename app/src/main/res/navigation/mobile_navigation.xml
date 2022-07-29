@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_schedule"
-        android:name="ru.tidinari.groupcommunication.view.schedule.ScheduleFragment"
+        android:name="ru.tidinari.groupcommunication.presentation.schedule.ScheduleFragment"
         android:label="@string/title_schedule"
         tools:layout="@layout/fragment_schedule" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="ru.tidinari.groupcommunication.view.settings.SettingsFragment"
+        android:name="ru.tidinari.groupcommunication.presentation.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

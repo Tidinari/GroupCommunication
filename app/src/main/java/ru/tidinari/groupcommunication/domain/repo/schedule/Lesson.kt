@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.models.repo.schedule
+package ru.tidinari.groupcommunication.domain.repo.schedule
 
 import kotlinx.serialization.Serializable
 

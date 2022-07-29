@@ -2,8 +2,8 @@ package ru.tidinari.groupcommunication
 
 import org.junit.Before
 import org.junit.Test
-import ru.tidinari.groupcommunication.models.groups.password.DefaultHashProvider
-import ru.tidinari.groupcommunication.models.groups.password.HashProvider
+import ru.tidinari.groupcommunication.domain.groups.password.DefaultHashProvider
+import ru.tidinari.groupcommunication.domain.groups.password.HashProvider
 import org.junit.Assert.*
 
 class DefaultHashProviderImplTest {

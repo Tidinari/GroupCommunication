@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.viewmodels.schedule
+package ru.tidinari.groupcommunication.presentation.schedule
 
 import android.os.Environment
 import androidx.lifecycle.LiveData
@@ -13,8 +13,8 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import ru.tidinari.groupcommunication.app.GroupCommunicationApplication
 import ru.tidinari.groupcommunication.app.RetrofitFactory
-import ru.tidinari.groupcommunication.models.repo.schedule.Lesson
-import ru.tidinari.groupcommunication.models.repo.schedule.ScheduleRepo
+import ru.tidinari.groupcommunication.domain.repo.schedule.Lesson
+import ru.tidinari.groupcommunication.domain.repo.schedule.ScheduleRepo
 import java.io.File
 
 class ScheduleViewModel(private val group: String) : ViewModel() {

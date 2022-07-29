@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.models.groups.password
+package ru.tidinari.groupcommunication.domain.groups.password
 
 class Password(rawPassword: String, hashProvider: HashProvider = DefaultHashProvider()) {
     val hash: String

@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.view
+package ru.tidinari.groupcommunication.presentation
 
 import android.content.Intent
 import android.os.Bundle

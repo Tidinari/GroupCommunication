@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.models.groups
+package ru.tidinari.groupcommunication.domain.groups
 
 import kotlinx.serialization.Serializable
 

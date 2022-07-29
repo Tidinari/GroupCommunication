@@ -1,11 +1,11 @@
-package ru.tidinari.groupcommunication.view.schedule
+package ru.tidinari.groupcommunication.presentation.schedule
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.tidinari.groupcommunication.R
-import ru.tidinari.groupcommunication.models.repo.schedule.Lesson
-import ru.tidinari.groupcommunication.models.repo.schedule.LessonTime
+import ru.tidinari.groupcommunication.domain.repo.schedule.Lesson
+import ru.tidinari.groupcommunication.domain.repo.schedule.LessonTime
 
 class LessonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val time: TextView = itemView.findViewById(R.id.time)

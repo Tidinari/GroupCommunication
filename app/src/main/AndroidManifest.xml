@@ -13,11 +13,11 @@
         android:usesCleartextTraffic="true"
         android:name=".app.GroupCommunicationApplication">
         <activity
-            android:name=".view.EntranceActivity"
+            android:name=".presentation.EntranceActivity"
             android:exported="false">
         </activity>
         <activity
-            android:name=".view.GroupInteractionActivity"
+            android:name=".presentation.GroupInteractionActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

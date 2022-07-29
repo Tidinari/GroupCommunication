@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.models.groups.password
+package ru.tidinari.groupcommunication.domain.groups.password
 
 interface HashProvider {
     fun hash(password: String): String
