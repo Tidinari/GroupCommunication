@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import ru.tidinari.groupcommunication.databinding.FragmentSettingsBinding
-import ru.tidinari.groupcommunication.viewmodels.settings.SettingsViewModel
 
 class SettingsFragment : Fragment() {
 
@@ -21,15 +20,10 @@ class SettingsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val settingsViewModel = viewModels<SettingsViewModel>()
-
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
-        settingsViewModel.value.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 

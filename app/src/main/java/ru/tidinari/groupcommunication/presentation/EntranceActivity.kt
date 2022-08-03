@@ -8,6 +8,7 @@ import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
+import ru.tidinari.groupcommunication.data.Group
 import ru.tidinari.groupcommunication.databinding.ActivityEntranceBinding
 
 
@@ -36,7 +37,7 @@ class EntranceActivity : AppCompatActivity() {
         groupInput.setAdapter(adapter)
         // Button action
         button.setOnClickListener {
-            entranceViewModel.saveGroupLocally(groupInput.text.toString())
+            entranceViewModel.saveGroupLocally(Group(groupInput.text.toString()))
             transferToGroupInteraction()
         }
     }

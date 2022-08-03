@@ -1,16 +1,16 @@
 package ru.tidinari.groupcommunication.presentation.schedule
 
-import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import ru.tidinari.groupcommunication.R
-import ru.tidinari.groupcommunication.app.GroupCommunicationApplication
-import ru.tidinari.groupcommunication.domain.repo.schedule.Lesson
+import ru.tidinari.groupcommunication.app.GroupCommApplication
+import ru.tidinari.groupcommunication.data.DayOfWeek
+import ru.tidinari.groupcommunication.data.WeekSchedule
 
 class WeekDaysTabListener(
-    private val schedule: LiveData<Map<Int, List<Lesson>>>,
+    private val schedule: LiveData<WeekSchedule>,
     private val viewModel: ScheduleViewModel,
     private val weekDayTab: TabLayout,
     private val weekDaysList: RecyclerView,
@@ -19,10 +19,14 @@ class WeekDaysTabListener(
     private val refreshPosition = 6
     private var previousTab: TabLayout.Tab? = null
 
+    companion object {
+        private const val DAY_WEEK_NUM = "dayWeekNum"
+    }
+
     init {
         val dayWeekTab = weekDayTab.getTabAt(
-            GroupCommunicationApplication.sharedPreferences.getInt(
-                "dayWeekNum",
+            GroupCommApplication.sharedPreferences.getInt(
+                DAY_WEEK_NUM,
                 0
             )
         )
@@ -41,15 +45,13 @@ class WeekDaysTabListener(
         if (pos == refreshPosition) {
             viewModel.getRemoteSchedule()
             tab.parent?.selectTab(previousTab)
-            Toast.makeText(
-                GroupCommunicationApplication.instance.applicationContext,
-                R.string.wait_for_refreshing,
-                Toast.LENGTH_SHORT
-            )
+            GroupCommApplication.toast(R.string.wait_for_refreshing)
         } else {
-            weekDaysList.adapter = LessonsAdapter(schedule.value?.get(pos) ?: return)
-            GroupCommunicationApplication.sharedPreferences.edit().putInt(
-                "dayWeekNum",
+            schedule.value?.onDay(DayOfWeek.of(tab.position))?.let {
+                weekDaysList.adapter = LessonsAdapter(it)
+            }
+            GroupCommApplication.sharedPreferences.edit().putInt(
+                DAY_WEEK_NUM,
                 pos
             ).commit()
         }

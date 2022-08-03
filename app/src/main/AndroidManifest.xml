@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_dem_avatar_round"
         android:theme="@style/Theme.GroupCommunication"
         android:usesCleartextTraffic="true"
-        android:name=".app.GroupCommunicationApplication">
+        android:name=".app.GroupCommApplication">
         <activity
             android:name=".presentation.EntranceActivity"
             android:exported="false">

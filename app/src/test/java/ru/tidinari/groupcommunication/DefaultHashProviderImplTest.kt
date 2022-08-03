@@ -2,22 +2,39 @@ package ru.tidinari.groupcommunication
 
 import org.junit.Before
 import org.junit.Test
-import ru.tidinari.groupcommunication.domain.groups.password.DefaultHashProvider
-import ru.tidinari.groupcommunication.domain.groups.password.HashProvider
 import org.junit.Assert.*
+import ru.tidinari.groupcommunication.data.*
 
 class DefaultHashProviderImplTest {
 
-    private lateinit var hashProvider: HashProvider
+    lateinit var schedule: Schedule
 
     @Before
     fun setUpImplementation() {
-        hashProvider = DefaultHashProvider()
+        schedule = Schedule(
+            mapOf(
+                1 to WeekSchedule(
+                    mapOf(
+                        DayOfWeek.SUNDAY to DaySchedule(
+                            mutableListOf(
+                                Lesson(
+                                    "Тест",
+                                    DayOfWeek.SUNDAY,
+                                    LessonInDay.FIRST,
+                                    LessonActivityType.LECTURE,
+                                    "Павлович А. А.",
+                                    "А-422"
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
     }
 
     @Test
     fun testCorrectHashOutput() {
-        val hash = hashProvider.hash("password")
-        assertEquals("5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", hash)
+
     }
 }

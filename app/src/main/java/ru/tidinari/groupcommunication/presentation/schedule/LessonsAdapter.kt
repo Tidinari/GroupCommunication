@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.tidinari.groupcommunication.R
-import ru.tidinari.groupcommunication.domain.repo.schedule.Lesson
+import ru.tidinari.groupcommunication.data.DaySchedule
+import ru.tidinari.groupcommunication.domain.models.DomainLesson
 
-class LessonsAdapter(val lessons: List<Lesson>):
+class LessonsAdapter(private val lessons: DaySchedule):
     RecyclerView.Adapter<LessonViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LessonViewHolder {

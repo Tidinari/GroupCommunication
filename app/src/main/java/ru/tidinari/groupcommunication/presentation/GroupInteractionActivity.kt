@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.tidinari.groupcommunication.R
-import ru.tidinari.groupcommunication.app.GroupCommunicationApplication
+import ru.tidinari.groupcommunication.app.GroupCommApplication
 import ru.tidinari.groupcommunication.databinding.ActivityGroupInteractionBinding
 
 class GroupInteractionActivity : AppCompatActivity() {
@@ -17,8 +17,8 @@ class GroupInteractionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val group = GroupCommunicationApplication.sharedPreferences.getString("group", null)
-        if (group.isNullOrEmpty()) {
+        val group = GroupCommApplication.group
+        if (group == null) {
             transferToEntranceActivity()
         }
 

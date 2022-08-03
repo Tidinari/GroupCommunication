@@ -5,8 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
-import ru.tidinari.groupcommunication.app.GroupCommunicationApplication
-import ru.tidinari.groupcommunication.domain.repo.schedule.Lesson
+import ru.tidinari.groupcommunication.app.GroupCommApplication
+import ru.tidinari.groupcommunication.data.WeekSchedule
+import ru.tidinari.groupcommunication.domain.models.DomainLesson
 
 class WeekTabListener(
     private val viewModel: ScheduleViewModel,
@@ -16,12 +17,16 @@ class WeekTabListener(
     lifecycle: LifecycleOwner
 ) : TabLayout.OnTabSelectedListener {
 
-    private val _weekSchedule: MutableLiveData<Map<Int, List<Lesson>>> = MutableLiveData()
-    private val weekSchedule: LiveData<Map<Int, List<Lesson>>> = _weekSchedule
+    private val _weekSchedule: MutableLiveData<WeekSchedule> = MutableLiveData()
+    private val weekSchedule: LiveData<WeekSchedule> = _weekSchedule
+
+    companion object {
+        private const val WEEK_NUM = "weekNum"
+    }
 
     init {
         val weekNumTab =
-            weekTab.getTabAt(GroupCommunicationApplication.sharedPreferences.getInt("weekNum", 0))
+            weekTab.getTabAt(GroupCommApplication.sharedPreferences.getInt(WEEK_NUM, 0))
         weekTab.selectTab(weekNumTab)
 
         viewModel.schedule.observe(lifecycle) {
@@ -44,14 +49,12 @@ class WeekTabListener(
         if (tab == null) return
         val week = tab.position + 1
         viewModel.schedule.value?.let { schedule ->
-            if (schedule.containsKey(week)) {
-                val weekScheduleList = schedule[week] ?: return@let
-                _weekSchedule.postValue(weekScheduleList.groupBy { it.day })
-            }
+            val weekSchedule = schedule.onWeek(week)
+            _weekSchedule.postValue(weekSchedule)
         }
-        GroupCommunicationApplication.sharedPreferences.edit().putInt(
-            "weekNum",
-            week - 1
+        GroupCommApplication.sharedPreferences.edit().putInt(
+            WEEK_NUM,
+            tab.position
         ).commit()
     }
 

@@ -5,9 +5,10 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.tidinari.groupcommunication.app.GroupCommunicationApplication
+import ru.tidinari.groupcommunication.app.GroupCommApplication
 import ru.tidinari.groupcommunication.app.RetrofitFactory
-import ru.tidinari.groupcommunication.domain.repo.entrance.EntryRepo
+import ru.tidinari.groupcommunication.data.Group
+import ru.tidinari.groupcommunication.domain.repo.EntryRepo
 
 class EntranceViewModel : ViewModel() {
     private val entryRepo: EntryRepo
@@ -17,17 +18,15 @@ class EntranceViewModel : ViewModel() {
         entryRepo = retrofit.create(EntryRepo::class.java)
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                _groupList.addAll(entryRepo.getGroups())
+                _groupList.addAll(entryRepo.getGroups().map { it.toData() })
             }
         }
     }
 
-    private val _groupList: MutableList<String> = mutableListOf()
-    val groupList: List<String> = _groupList
+    private val _groupList: MutableList<Group> = mutableListOf()
+    val groupList: List<Group> = _groupList
 
-    fun saveGroupLocally(group: String) {
-        val localStorage = GroupCommunicationApplication.sharedPreferences.edit()
-        localStorage.putString("group", group)
-        localStorage.commit()
+    fun saveGroupLocally(group: Group) {
+        GroupCommApplication.group = group
     }
 }

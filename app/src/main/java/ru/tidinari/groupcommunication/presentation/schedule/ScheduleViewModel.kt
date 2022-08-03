@@ -11,19 +11,20 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import ru.tidinari.groupcommunication.app.GroupCommunicationApplication
+import ru.tidinari.groupcommunication.app.GroupCommApplication
 import ru.tidinari.groupcommunication.app.RetrofitFactory
-import ru.tidinari.groupcommunication.domain.repo.schedule.Lesson
-import ru.tidinari.groupcommunication.domain.repo.schedule.ScheduleRepo
+import ru.tidinari.groupcommunication.data.Group
+import ru.tidinari.groupcommunication.data.Schedule
+import ru.tidinari.groupcommunication.domain.repo.ScheduleRepo
 import java.io.File
 
-class ScheduleViewModel(private val group: String) : ViewModel() {
+class ScheduleViewModel(private val group: Group) : ViewModel() {
 
     private val localScheduleFile by lazy {
-        File(GroupCommunicationApplication.localFileDir, "schedule-$group.json")
+        File(GroupCommApplication.localFileDir, "schedule-$group.json")
     }
-    private val _schedule: MutableLiveData<Map<Int, List<Lesson>>> = MutableLiveData()
-    val schedule: LiveData<Map<Int, List<Lesson>>> = _schedule
+    private val _schedule: MutableLiveData<Schedule?> = MutableLiveData()
+    val schedule: LiveData<Schedule?> = _schedule
     var usedRemoteStorage = false
      private set
 
@@ -34,13 +35,14 @@ class ScheduleViewModel(private val group: String) : ViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val remoteSchedule = scheduleRepo.getGroupSchedule(group)
-                _schedule.postValue(remoteSchedule)
+                _schedule.postValue(remoteSchedule.toData())
             }
         }
     }
 
     fun writeScheduleToLocalStorage(): Boolean {
         if (isExternalStorageAvailable()) return false
+        if (schedule.value != null) return false
 
         localScheduleFile.writeText(Json.encodeToString(schedule.value))
         return true
@@ -48,8 +50,9 @@ class ScheduleViewModel(private val group: String) : ViewModel() {
 
     fun getLocalSchedule(): Boolean {
         if (isExternalStorageAvailable()) return false
+        if (!isLocalSchedulePresented()) return false
 
-        val localSchedule: Map<Int, List<Lesson>> = Json.decodeFromString(
+        val localSchedule: Schedule = Json.decodeFromString(
             localScheduleFile.readText()
         )
         usedRemoteStorage = false
@@ -65,7 +68,7 @@ class ScheduleViewModel(private val group: String) : ViewModel() {
         return false
     }
 
-    fun isLocalSchedulePresented(): Boolean {
+    private fun isLocalSchedulePresented(): Boolean {
         return localScheduleFile.exists()
     }
 }
