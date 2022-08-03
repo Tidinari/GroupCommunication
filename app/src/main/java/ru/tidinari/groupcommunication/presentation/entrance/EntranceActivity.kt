@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.presentation
+package ru.tidinari.groupcommunication.presentation.entrance
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,9 @@ import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
-import ru.tidinari.groupcommunication.data.Group
+import ru.tidinari.groupcommunication.data.models.Group
 import ru.tidinari.groupcommunication.databinding.ActivityEntranceBinding
+import ru.tidinari.groupcommunication.presentation.GroupInteractionActivity
 
 
 class EntranceActivity : AppCompatActivity() {
@@ -32,7 +33,7 @@ class EntranceActivity : AppCompatActivity() {
         val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
             this,
             android.R.layout.simple_dropdown_item_1line,
-            entranceViewModel.groupList
+            entranceViewModel.groupList.map { it.group }
         )
         groupInput.setAdapter(adapter)
         // Button action

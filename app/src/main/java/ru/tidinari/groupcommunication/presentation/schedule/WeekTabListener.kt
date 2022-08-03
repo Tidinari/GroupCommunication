@@ -6,8 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import ru.tidinari.groupcommunication.app.GroupCommApplication
-import ru.tidinari.groupcommunication.data.WeekSchedule
-import ru.tidinari.groupcommunication.domain.models.DomainLesson
+import ru.tidinari.groupcommunication.data.models.WeekSchedule
 
 class WeekTabListener(
     private val viewModel: ScheduleViewModel,

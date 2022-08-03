@@ -3,7 +3,7 @@ package ru.tidinari.groupcommunication.app
 import android.app.Application
 import android.content.SharedPreferences
 import android.widget.Toast
-import ru.tidinari.groupcommunication.data.Group
+import ru.tidinari.groupcommunication.data.models.Group
 import java.io.File
 
 class GroupCommApplication : Application() {

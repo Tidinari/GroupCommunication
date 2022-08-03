@@ -1,4 +1,4 @@
-package ru.tidinari.groupcommunication.app
+package ru.tidinari.groupcommunication.data.network
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
@@ -8,7 +8,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
 class RetrofitFactory private constructor() {
-
     companion object {
         val instance = RetrofitFactory()
     }
@@ -27,7 +26,7 @@ class RetrofitFactory private constructor() {
     private val converterFactory = Json.asConverterFactory("application/json".toMediaType())
 
     val retrofitClient: Retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.56.1:5050/") // TODO: add base url
+        .baseUrl("http://192.168.0.138:5050/") // TODO: add base url
         .client(okHttpClient)
         .addConverterFactory(converterFactory)
         .build()

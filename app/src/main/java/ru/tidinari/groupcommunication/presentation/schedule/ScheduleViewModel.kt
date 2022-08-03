@@ -12,9 +12,9 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import ru.tidinari.groupcommunication.app.GroupCommApplication
-import ru.tidinari.groupcommunication.app.RetrofitFactory
-import ru.tidinari.groupcommunication.data.Group
-import ru.tidinari.groupcommunication.data.Schedule
+import ru.tidinari.groupcommunication.data.network.RetrofitFactory
+import ru.tidinari.groupcommunication.data.models.Group
+import ru.tidinari.groupcommunication.data.models.Schedule
 import ru.tidinari.groupcommunication.domain.repo.ScheduleRepo
 import java.io.File
 

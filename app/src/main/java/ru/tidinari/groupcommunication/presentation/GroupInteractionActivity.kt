@@ -9,6 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.tidinari.groupcommunication.R
 import ru.tidinari.groupcommunication.app.GroupCommApplication
 import ru.tidinari.groupcommunication.databinding.ActivityGroupInteractionBinding
+import ru.tidinari.groupcommunication.presentation.entrance.EntranceActivity
 
 class GroupInteractionActivity : AppCompatActivity() {
 
@@ -20,6 +21,7 @@ class GroupInteractionActivity : AppCompatActivity() {
         val group = GroupCommApplication.group
         if (group == null) {
             transferToEntranceActivity()
+            return
         }
 
         binding = ActivityGroupInteractionBinding.inflate(layoutInflater)

@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.tidinari.groupcommunication.R
-import ru.tidinari.groupcommunication.data.DaySchedule
-import ru.tidinari.groupcommunication.domain.models.DomainLesson
+import ru.tidinari.groupcommunication.data.models.DaySchedule
 
 class LessonsAdapter(private val lessons: DaySchedule):
     RecyclerView.Adapter<LessonViewHolder>() {

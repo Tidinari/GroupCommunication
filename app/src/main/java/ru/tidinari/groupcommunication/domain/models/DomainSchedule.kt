@@ -1,9 +1,10 @@
 package ru.tidinari.groupcommunication.domain.models
 
 import kotlinx.serialization.Serializable
-import okhttp3.internal.toImmutableList
-import okhttp3.internal.toImmutableMap
-import ru.tidinari.groupcommunication.data.*
+import ru.tidinari.groupcommunication.data.models.DayOfWeek
+import ru.tidinari.groupcommunication.data.models.DaySchedule
+import ru.tidinari.groupcommunication.data.models.Schedule
+import ru.tidinari.groupcommunication.data.models.WeekSchedule
 
 @Serializable
 data class DomainSchedule(val schedule: Map<Int, List<DomainLesson>>) {

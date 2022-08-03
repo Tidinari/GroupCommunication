@@ -4,9 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.tidinari.groupcommunication.R
-import ru.tidinari.groupcommunication.data.Lesson
-import ru.tidinari.groupcommunication.domain.models.DomainLesson
-import ru.tidinari.groupcommunication.data.LessonInDay
+import ru.tidinari.groupcommunication.data.models.Lesson
 
 class LessonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val time: TextView = itemView.findViewById(R.id.time)

@@ -1,10 +1,9 @@
 package ru.tidinari.groupcommunication.domain.models
 
 import kotlinx.serialization.Serializable
-import ru.tidinari.groupcommunication.data.DayOfWeek
-import ru.tidinari.groupcommunication.data.Lesson
-import ru.tidinari.groupcommunication.data.LessonActivityType
-import ru.tidinari.groupcommunication.data.LessonInDay
+import ru.tidinari.groupcommunication.data.models.Lesson
+import ru.tidinari.groupcommunication.data.models.LessonActivityType
+import ru.tidinari.groupcommunication.data.models.LessonInDay
 
 @Serializable
 data class DomainLesson(

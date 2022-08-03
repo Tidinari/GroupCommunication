@@ -11,7 +11,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import ru.tidinari.groupcommunication.R
 import ru.tidinari.groupcommunication.app.GroupCommApplication
-import ru.tidinari.groupcommunication.data.Group
+import ru.tidinari.groupcommunication.data.models.DaySchedule
 import ru.tidinari.groupcommunication.databinding.FragmentScheduleBinding
 
 class ScheduleFragment : Fragment() {
@@ -33,7 +33,7 @@ class ScheduleFragment : Fragment() {
         _binding = FragmentScheduleBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.weekLessons.adapter = LessonsAdapter(emptyList())
+        binding.weekLessons.adapter = LessonsAdapter(DaySchedule(mutableListOf()))
 
         // Construct week tabs
         for (i in 1..16) {

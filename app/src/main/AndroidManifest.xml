@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.tidinari.groupcommunication">
+>
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,7 +13,7 @@
         android:usesCleartextTraffic="true"
         android:name=".app.GroupCommApplication">
         <activity
-            android:name=".presentation.EntranceActivity"
+            android:name=".presentation.entrance.EntranceActivity"
             android:exported="false">
         </activity>
         <activity
