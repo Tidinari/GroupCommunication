@@ -14,7 +14,7 @@ class LessonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val room: TextView = itemView.findViewById(R.id.room)
 
     fun applyLesson(lesson: Lesson) {
-        time.text = lesson.lessonInDay.value
+        time.text = lesson.timeIdentifier._lessonInDay.value
         name.text = lesson.name
         teacher.text = lesson.teacher
         activityType.text = lesson.activityType.value

@@ -1,16 +1,13 @@
 package ru.tidinari.groupcommunication.presentation.schedule
 
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import ru.tidinari.groupcommunication.R
 import ru.tidinari.groupcommunication.app.GroupCommApplication
 import ru.tidinari.groupcommunication.data.models.DayOfWeek
-import ru.tidinari.groupcommunication.data.models.WeekSchedule
 
 class WeekDaysTabListener(
-    private val schedule: LiveData<WeekSchedule>,
     private val viewModel: ScheduleViewModel,
     private val weekDayTab: TabLayout,
     private val weekDaysList: RecyclerView,
@@ -31,12 +28,6 @@ class WeekDaysTabListener(
             )
         )
         weekDayTab.selectTab(dayWeekTab)
-
-        schedule.observe(lifecycle) {
-            val index = weekDayTab.selectedTabPosition
-            val tab = weekDayTab.getTabAt(index)
-            weekDayTab.selectTab(tab, false)
-        }
     }
 
     override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -47,9 +38,6 @@ class WeekDaysTabListener(
             tab.parent?.selectTab(previousTab)
             GroupCommApplication.toast(R.string.wait_for_refreshing)
         } else {
-            schedule.value?.onDay(DayOfWeek.of(tab.position))?.let {
-                weekDaysList.adapter = LessonsAdapter(it)
-            }
             GroupCommApplication.sharedPreferences.edit().putInt(
                 DAY_WEEK_NUM,
                 pos
