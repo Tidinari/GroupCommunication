@@ -8,17 +8,13 @@ import kotlinx.coroutines.withContext
 import ru.tidinari.groupcommunication.app.GroupCommApplication
 import ru.tidinari.groupcommunication.data.network.RetrofitFactory
 import ru.tidinari.groupcommunication.data.models.Group
-import ru.tidinari.groupcommunication.domain.repo.EntryRepo
 
 class EntranceViewModel : ViewModel() {
-    private val entryRepo: EntryRepo
 
     init {
         val retrofit = RetrofitFactory.instance.retrofitClient
-        entryRepo = retrofit.create(EntryRepo::class.java)
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                _groupList.addAll(entryRepo.getGroups().map { it.toData() })
             }
         }
     }

@@ -14,8 +14,7 @@ import kotlinx.serialization.json.Json
 import ru.tidinari.groupcommunication.app.GroupCommApplication
 import ru.tidinari.groupcommunication.data.network.RetrofitFactory
 import ru.tidinari.groupcommunication.data.models.Group
-import ru.tidinari.groupcommunication.data.models.Schedule
-import ru.tidinari.groupcommunication.domain.repo.ScheduleRepo
+import ru.tidinari.groupcommunication.data.models.FacultySchedule
 import java.io.File
 
 class ScheduleViewModel(private val group: Group) : ViewModel() {
@@ -23,19 +22,16 @@ class ScheduleViewModel(private val group: Group) : ViewModel() {
     private val localScheduleFile by lazy {
         File(GroupCommApplication.localFileDir, "schedule-$group.json")
     }
-    private val _schedule: MutableLiveData<Schedule?> = MutableLiveData()
-    val schedule: LiveData<Schedule?> = _schedule
+    private val _schedule: MutableLiveData<FacultySchedule?> = MutableLiveData()
+    val schedule: LiveData<FacultySchedule?> = _schedule
     var usedRemoteStorage = false
      private set
 
     fun getRemoteSchedule() {
         usedRemoteStorage = true
         val retrofit = RetrofitFactory.instance.retrofitClient
-        val scheduleRepo = retrofit.create(ScheduleRepo::class.java)
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val remoteSchedule = scheduleRepo.getGroupSchedule(group)
-                _schedule.postValue(remoteSchedule.toData())
             }
         }
     }
@@ -52,7 +48,7 @@ class ScheduleViewModel(private val group: Group) : ViewModel() {
         if (isExternalStorageAvailable()) return false
         if (!isLocalSchedulePresented()) return false
 
-        val localSchedule: Schedule = Json.decodeFromString(
+        val localSchedule: FacultySchedule = Json.decodeFromString(
             localScheduleFile.readText()
         )
         usedRemoteStorage = false
